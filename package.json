@@ -1,0 +1,25 @@
+{
+  "name": "wolt-checker-bot",
+  "version": "1.0.0",
+  "description": "A Telegram bot that checks Wolt restaurant availability and sends notifications",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "notify": "node src/notify.js",
+    "dev": "nodemon src/main.js"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.64.0",
+    "axios": "^1.6.0",
+    "sqlite3": "^5.1.6",
+    "node-cron": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+} 

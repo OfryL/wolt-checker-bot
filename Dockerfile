@@ -1,8 +1,21 @@
-FROM python:3
+FROM node:18-alpine
+
 WORKDIR /app
-COPY ./src/requirements.txt ./requirements.txt
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
-COPY ./src/* ./
-RUN chmod +x ./main.py
-CMD python ./main.py
+
+# Copy package.json and package-lock.json (if available)
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci --only=production
+
+# Copy source code
+COPY src/ ./src/
+
+# Create database directory
+RUN mkdir -p ./db
+
+# Expose port (optional, in case you want to add health checks later)
+EXPOSE 3000
+
+# Default command to run the main bot
+CMD ["npm", "start"]
